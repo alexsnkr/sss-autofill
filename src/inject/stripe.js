@@ -4,23 +4,28 @@ chrome.extension.sendMessage({}, function (response) {
 			let profile = results.profiles.find(profile => profile.id === results.selectedProfile);
 
 			if (profile) {
-				autofill('cardnumber', profile.cardNumber);
-				autofill('exp-date', `${profile.expiryMonth} / ${profile.expiryYear.slice(-2)}`);
-				autofill('cvc', profile.cvv);
-				autofill('postal', profile.zipcode);
+				fillByName('cardnumber', profile.cardNumber);
+				fillByName('exp-date', `${profile.expiryMonth} / ${profile.expiryYear.slice(-2)}`);
+				fillByName('cvc', profile.cvv);
+				fillByName('postal', profile.zipcode);
 			}
 		}
 	});
 });
 
-function autofill(name, value) {
+
+function fillByName(name, value) {
 	let element = document.getElementsByName(name)[0];
 	if (element) {
-		let event = document.createEvent("HTMLEvents");
-		event.initEvent('change', true, false);
-		element.focus();
-		element.value = value;
-		element.dispatchEvent(event);
-		element.blur();
-	}
+		autofill(element, value);
+	}	
+}
+
+function autofill(element, value) {
+	let event = document.createEvent("HTMLEvents");
+	event.initEvent('change', true, false);
+	element.focus();
+	element.value = value;
+	element.dispatchEvent(event);
+	element.blur();
 }

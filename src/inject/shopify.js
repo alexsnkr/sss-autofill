@@ -6,6 +6,7 @@ chrome.extension.sendMessage({}, function (response) {
 			if (profile) {
 				autofill('checkout_email_or_phone', profile.email);
 				autofill('checkout[email_or_phone]', profile.email, true);
+				autofill('checkout[email]', profile.email, true);
 				autofill('checkout_shipping_address_first_name', profile.firstName);
 				autofill('checkout_shipping_address_last_name', profile.lastName);
 				autofill('checkout_shipping_address_address1', profile.address);
@@ -14,6 +15,7 @@ chrome.extension.sendMessage({}, function (response) {
 				autofill('checkout_shipping_address_country', profile.country);
 				autofill('checkout_shipping_address_province', profile.state);
 				autofill('checkout_shipping_address_zip', profile.zipcode);
+				autofill('checkout_shipping_address_phone', profile.phoneNumber);
 			}
 		}
 	});
