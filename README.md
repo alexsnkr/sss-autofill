@@ -3,8 +3,6 @@ Open source autofill extension for Shopify, Supreme, and Stripe.
 
 Made by Alex.#6254
 
-https://discord.gg/2vs2ceQ
-
 ### Installation
 ```
 Download the zip file here https://github.com/alexsnkr/sss-autofill/releases
