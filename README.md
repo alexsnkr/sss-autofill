@@ -14,7 +14,7 @@ Drag and drop the zip file into the extensions page
 ```
 
 
-What to make some improvements? Make a pull request!
+Want to make some improvements? Make a pull request!
 
 ### Development 
 ```
