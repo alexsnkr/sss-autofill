@@ -23,6 +23,7 @@ chrome.extension.sendMessage({}, function (response) {
 				fill('address-level2', profile.city);
 				fill('city', profile.city);
 				fill('state', profile.state);
+				fill('address-level1', profile.state);
 
 				fill('postal-code', profile.zipcode);
 				fill('zipcode', profile.zipcode);
