@@ -1,4 +1,4 @@
-# sss-autofill
+# SSS Autofill
 Open source autofill extension for Shopify, Supreme, and Stripe.
 
 Made by Alex.#6254
