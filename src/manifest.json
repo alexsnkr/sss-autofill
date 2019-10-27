@@ -1,0 +1,62 @@
+{
+	"name": "SSS Autofill",
+	"description": "Open source autofill extension for Shopify, Supreme and Stripe",
+	"version": "0.0.1",
+	"manifest_version": 2,
+	"icons": {
+		"48": "icons/icon_48.png",
+		"128": "icons/icon_128.png"
+	},
+	"browser_action": {
+		"default_title": "autofill-vue",
+		"default_popup": "popup/popup.html"
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		],
+		"persistent": true
+	},
+	"permissions": [
+		"https://*/*",
+		"http://*/*",
+		"tabs",
+		"storage"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"https://js.stripe.com/*"
+			],
+			"js": [
+				"inject/stripe.js"
+			],
+			"all_frames": true
+		},
+		{
+			"matches": [
+				"https://www.supremenewyork.com/checkout"
+			],
+			"js": [
+				"inject/supreme.js"
+			]
+		},
+		{
+			"matches": [
+				"https://*/*/checkouts/*"
+			],
+			"js": [
+				"inject/shopify.js"
+			]
+		},
+		{
+			"matches": [
+				"https://*.shopifycs.com/*"
+			],
+			"js": [
+				"inject/shopify-card.js"
+			],
+			"all_frames": true
+		}
+	]
+}

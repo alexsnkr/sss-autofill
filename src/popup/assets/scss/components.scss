@@ -1,0 +1,97 @@
+.title {
+	@apply text-3xl font-bold text-primary-500 leading-none;
+}
+
+.btn {
+	@apply font-bold py-2 px-4 rounded flex items-center cursor-pointer outline-none transition-color transition-all select-none;
+
+	&:focus {
+		@apply outline-none;
+	}
+
+	&:disabled {
+		opacity: 0.7;
+		cursor: not-allowed;
+	}
+
+	&.btn-primary {
+		@apply bg-primary-500 text-white;
+
+		&:hover {
+			@apply bg-primary-600;
+		}
+	}
+
+	&.btn-blue {
+		@apply bg-blue-400 text-white;
+
+		&:hover {
+			@apply bg-blue-500;
+		}
+	}
+
+	&.btn-green {
+		@apply bg-green-400 text-white;
+
+		&:hover {
+			@apply bg-green-500;
+		}
+	}
+
+	&.btn-orange {
+		@apply bg-orange-400 text-white;
+
+		&:hover {
+			@apply bg-orange-500;
+		}
+	}
+
+	&.btn-red {
+		@apply bg-red-400 text-white;
+
+		&:hover {
+			@apply bg-red-500;
+		}
+	}
+
+	&.btn-icon {
+		@apply h-10 w-10 p-3;
+	}
+}
+
+
+.form-control {
+	@apply block appearance-none w-full bg-white border-2 border-gray-300 text-gray-700 py-2 px-2 rounded leading-tight;
+
+	&:disabled {
+		@apply bg-gray-200 cursor-not-allowed;
+	}
+
+	&:focus {
+		@apply outline-none border-primary-300;
+	}
+}
+
+.control-label {
+	@apply text-primary-text font-bold select-none;
+}
+
+.select {
+	@apply relative;
+	
+	select {
+		@apply block appearance-none w-full bg-white border-2 border-gray-300 text-gray-700 py-2 px-2 pr-8 rounded leading-tight;
+
+		&:focus {
+			@apply outline-none border-gray-400;
+		}
+	}
+
+	.dropdown {
+		@apply pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700;
+
+		svg {
+			@apply fill-current h-4 w-4;
+		}
+	}
+}
