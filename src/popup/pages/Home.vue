@@ -196,7 +196,7 @@
 				this.profiles = results.profiles
 			});
 
-			chrome.storage.local.get('selectedProfile', (results) => {
+			chrome.storage.local.get({'selectedProfile': null}, (results) => {
 				this.selectedProfile = results.selectedProfile;				
 				this.selectProfile();
 			});

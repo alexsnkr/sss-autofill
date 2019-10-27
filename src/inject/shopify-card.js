@@ -8,7 +8,6 @@ chrome.extension.sendMessage({}, function (response) {
 				autofill('name', profile.cardholderName);
 				autofill('expiry', `${profile.expiryMonth}/${profile.expiryYear}`);
 				autofill('verification_value', profile.cvv);
-
 			}
 		}
 	});
@@ -19,7 +18,6 @@ function autofill(id, value) {
 	
 	if (element) {
 		if (element.hasAttribute("data-honeypot-field")) return
-		console.log(element);
 		let event = document.createEvent("HTMLEvents");
 		event.initEvent('change', true, false);
 

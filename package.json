@@ -1,11 +1,9 @@
 {
   "name": "autofill",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Open source autofill extension for Shopify, Supreme and Stripe",
   "author": "Alex.#6254",
   "scripts": {
-    "prettier": "prettier \"src/**/*.{js,vue}\"",
-    "prettier:write": "npm run prettier -- --write",
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
     "build-zip": "node scripts/build-zip.js",
