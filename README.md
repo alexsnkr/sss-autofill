@@ -2,6 +2,7 @@
 Open source autofill extension for Shopify, Supreme, and Stripe.
 
 Made by Alex.#6254
+https://twitter.com/alexsnkrdev
 
 ### Installation
 ```
