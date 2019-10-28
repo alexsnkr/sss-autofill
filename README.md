@@ -6,10 +6,10 @@ https://twitter.com/alexsnkrdev
 
 ### Installation
 ```
-Download the zip file here https://github.com/alexsnkr/sss-autofill/releases
+Download the zip file here https://github.com/alexsnkr/sss-autofill/releases (DON'T UNZIP)
 Go to chrome://extensions/
 Enable Developer mode
-Drag and drop the zip file into the extensions page
+Drag and drop the zip file into the extensions page 
 ```
 
 
