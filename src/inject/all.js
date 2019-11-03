@@ -37,10 +37,18 @@ chrome.extension.sendMessage({}, function (response) {
 function fill(name, value) {
 	fillByAutocomplete(name, value);
 	fillByName(name, value);
+	fillById(name, value);
 }
 
 function fillByName(name, value) {
 	let element = document.getElementsByName(name)[0];
+	if (element) {
+		autofill(element, value);
+	}
+}
+
+function fillById(name, value) {
+	let element = document.getElementById(name);
 	if (element) {
 		autofill(element, value);
 	}

@@ -1,7 +1,7 @@
 {
 	"name": "SSS Autofill",
 	"description": "Open source autofill extension for Shopify, Supreme and Stripe",
-	"version": "0.0.1",
+	"version": "0.0.5",
 	"manifest_version": 2,
 	"icons": {
 		"48": "icons/icon_48.png",
