@@ -1,5 +1,3 @@
-# DO NOT REPACKAGE AND SELL AS YOUR OWN
-
 # SSS Autofill
 Open source autofill extension for Shopify, Supreme, and Stripe.
 
