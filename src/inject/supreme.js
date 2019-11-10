@@ -11,7 +11,6 @@ chrome.extension.sendMessage({}, function (response) {
 				autofill('order[billing_address_2]', profile.address2);
 				autofill('order[billing_address_3]', profile.address3);
 				autofill('order[billing_city]', profile.city);
-				// autofill('order[billing_state]', profile.state);
 				autofill('order[billing_zip]', profile.zipcode);
 				autofill('order[billing_country]', getCountryCode(profile.country));
 				autofill('credit_card[type]', profile.cardType);
@@ -22,6 +21,7 @@ chrome.extension.sendMessage({}, function (response) {
 				autofill('credit_card[ovv]', profile.cvv);
 				autofill('credit_card[vvv]', profile.cvv);
 				check('order[terms]', 1);
+				autofill('order[billing_state]', profile.state);
 				document.querySelector('.terms .icheckbox_minimal').classList.add('checked')
 			}
 		}
