@@ -2,6 +2,7 @@
 Open source autofill extension for Shopify, Supreme, and Stripe.
 
 Download on the Chrome store:
+
 https://chrome.google.com/webstore/detail/sss-autofill/gdhmefadngapdfphedlcimcdplachcip
 
 Made by Alex.#6254
