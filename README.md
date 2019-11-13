@@ -1,16 +1,19 @@
 # SSS Autofill
 Open source autofill extension for Shopify, Supreme, and Stripe.
 
-Made by Alex.#6254
+Download on the Chrome store:
 
-https://discord.gg/2vs2ceQ
+https://chrome.google.com/webstore/detail/sss-autofill/gdhmefadngapdfphedlcimcdplachcip
+
+Made by Alex.#6254
+https://twitter.com/alexsnkrdev
 
 ### Installation
 ```
-Download the zip file here https://github.com/alexsnkr/sss-autofill/releases
+Download the zip file here https://github.com/alexsnkr/sss-autofill/releases/download/v0.0.4/sss-autofill-v0.0.4.zip
 Go to chrome://extensions/
 Enable Developer mode
-Drag and drop the zip file into the extensions page
+Drag and drop the zip file into the extensions page (DON'T UNZIP)
 ```
 
 
