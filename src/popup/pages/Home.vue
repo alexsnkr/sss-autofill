@@ -67,31 +67,33 @@
 					</div>
 				</div>
 
-				<div class="w-full mb-3">
-					<label for="address3" class="control-label">Address 3</label>
-					<input type="text" class="form-control" id="address3" v-model="profile.address3" :disabled="!selectedProfile">
-				</div>
-
 				<div class="flex flex-wrap -mx-2 mb-3">
+					<div class="w-1/2 px-2">
+						<label for="address3" class="control-label">Address 3</label>
+						<input type="text" class="form-control" id="address3" v-model="profile.address3" :disabled="!selectedProfile">
+					</div>
+
 					<div class="w-1/2 px-2">
 						<label for="city" class="control-label">City</label>
 						<input type="text" class="form-control" id="city" v-model="profile.city" :disabled="!selectedProfile">
 					</div>
-					<div class="w-1/2 px-2">
-						<state-select v-model="profile.state" />
-					</div>
 				</div>
-				
 
 				<div class="flex flex-wrap -mx-2 mb-3">
 					<div class="w-1/2 px-2">
-						<country-select v-model="profile.country" :disabled="!selectedProfile" />
+						<label for="country" class="control-label">Country/region</label>
+						<input type="text" class="form-control" id="country" v-model="profile.country" :disabled="!selectedProfile">
 					</div>
 
 					<div class="w-1/2 px-2">
-						<label for="zipcode" class="control-label">Zipcode/postcode</label>
-						<input type="text" class="form-control" id="zipcode" v-model="profile.zipcode" :disabled="!selectedProfile">
+						<label for="region" class="control-label">State/province</label>
+						<input type="text" class="form-control" id="state" v-model="profile.state" :disabled="!selectedProfile">
 					</div>
+				</div>
+
+				<div class="w-full mb-3">
+					<label for="zipcode" class="control-label">Zipcode/postcode</label>
+					<input type="text" class="form-control" id="zipcode" v-model="profile.zipcode" :disabled="!selectedProfile">
 				</div>
 
 				<h3 class="mb-2 mt-5 text-primary-500 text-lg font-bold">Card details</h3>
@@ -183,7 +185,10 @@
 				enabled: false,
 				profiles: [],
 				profile: {},
-				selectedProfile: null
+				selectedProfile: null,
+
+				country: '',
+    			region: ''
 			}
 		},
 
@@ -207,17 +212,17 @@
 				let newProfile = {
 					id: uuid(),
 					profileName: 'New profile',
-					firstName: '',
-					lastName: '',
-					email: '',
-					phoneNumber: '',
-					address: '',
-					address2: '',
+					firstName: 'Test',
+					lastName: 'Name',
+					email: 'test@test.com',
+					phoneNumber: '1234567890',
+					address: '1 Street',
+					address2: 'Street',
 					address3: '',
-					city: '',
-					state: '',
-					country: '',
-					zipcode: '',
+					city: 'Testing',
+					country: 'United States',
+					state: 'CA',
+					zipcode: '90201',
 					cardholderName: '',
 					cardType: 'visa',
 					cardNumber: '',
