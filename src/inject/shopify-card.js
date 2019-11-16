@@ -1,29 +1,51 @@
-chrome.extension.sendMessage({}, function (response) {
-	chrome.storage.local.get({ 'profiles': [], 'selectedProfile': null, 'enabled': false }, (results) => {
-		if (results.enabled) {			
-			let profile = results.profiles.find(profile => profile.id === results.selectedProfile);
+let profile;
+let settings;
 
+chrome.extension.sendMessage({}, (response) => {
+	chrome.storage.local.get({ profiles: [], selectedProfile: null, enabled: false, settings: {} }, (results) => {
+		profile = results.profiles.find(profile => profile.id === results.selectedProfile);
+		settings = results.settings;
+
+		if (settings.enabled) {
 			if (profile) {
-				autofill('number', profile.cardNumber);
-				autofill('name', profile.cardholderName);
-				autofill('expiry', `${profile.expiryMonth}/${profile.expiryYear}`);
-				autofill('verification_value', profile.cvv);
+				let fields = {
+					'number': profile.cardNumber,
+					'name': profile.cardholderName,
+					'expiry': `${profile.expiryMonth}/${profile.expiryYear}`,
+					'verification_value': profile.cvv,
+				}
+
+				Object.keys(fields).forEach(id => {
+					fillField(id, fields[id]);
+				});
+
+				chrome.runtime.sendMessage({action: 'completeCheckout'});
 			}
 		}
 	});
 });
 
-function autofill(id, value) {
+function fillField(id, value) {
 	let element = document.getElementById(id);
-	
 	if (element) {
-		if (element.hasAttribute("data-honeypot-field")) return
-		let event = document.createEvent("HTMLEvents");
-		event.initEvent('change', true, false);
-
 		element.focus();
-		element.value = value;
-		element.dispatchEvent(event);
+		if (settings.simulateTyping && !select) {
+			simulateTyping(element, value, 0);
+		} else {
+			element.value = value;
+			element.dispatchEvent(new Event('change'));
+		}
 		element.blur();
+	}
+}
+
+function simulateTyping(element, value, i) {
+	if (i < value.length) {
+		element.value += value.charAt(i);
+		element.dispatchEvent(new Event('change'));
+		setTimeout(() => {
+			i++;
+			simulateTyping(element, value, i);
+		}, 10);
 	}
 }

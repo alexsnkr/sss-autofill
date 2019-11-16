@@ -4,6 +4,7 @@
 		<div class="flex-1 p-4 overflow-auto">
 			<router-view></router-view>
 		</div>
+		<v-footer />
 	</div>
 </template>
 

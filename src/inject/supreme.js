@@ -1,43 +1,71 @@
-chrome.extension.sendMessage({}, function (response) {
-	chrome.storage.local.get({ 'profiles': [], 'selectedProfile': null, 'enabled': false }, (results) => {
-		if (results.enabled) {
-			let profile = results.profiles.find(profile => profile.id === results.selectedProfile);
+let profile;
+let settings;
 
-			if (profile) {				
-				autofill('order[billing_name]', `${profile.firstName} ${profile.lastName}`);
-				autofill('order[email]', profile.email);
-				autofill('order[tel]', profile.phoneNumber);
-				autofill('order[billing_address]', profile.address);
-				autofill('order[billing_address_2]', profile.address2);
-				autofill('order[billing_address_3]', profile.address3);
-				autofill('order[billing_city]', profile.city);
-				// autofill('order[billing_state]', profile.state);
-				autofill('order[billing_zip]', profile.zipcode);
-				autofill('order[billing_country]', getCountryCode(profile.country));
-				autofill('credit_card[type]', profile.cardType);
-				autofill('credit_card[cnb]', profile.cardNumber);
-				autofill('carn', profile.cardNumber);
-				autofill('credit_card[month]', profile.expiryMonth);
-				autofill('credit_card[year]', profile.expiryYear);
-				autofill('credit_card[ovv]', profile.cvv);
-				autofill('credit_card[vvv]', profile.cvv);
-				check('order[terms]', 1);
-				document.querySelector('.terms .icheckbox_minimal').classList.add('checked')
+chrome.extension.sendMessage({}, (response) => {	
+	chrome.storage.local.get({ profiles: [], selectedProfile: null, enabled: false, settings: {} }, (results) => {
+		profile = results.profiles.find(profile => profile.id === results.selectedProfile);
+		settings = results.settings;
+
+		if (settings.enabled) {
+			if (profile) {
+
+				let fields = {
+					'order_billing_name': `${profile.firstName} ${profile.lastName}`,
+					'order_email': profile.email,
+					'order_tel': profile.phoneNumber,
+					'bo': profile.address,
+					'oba3': profile.address2,
+					'order_billing_address_3': profile.address3,
+					'order_billing_city': profile.city,
+					'order_billing_zip': profile.zipcode,
+					'cnb': profile.cardNumber,
+					'rnsnckrn': profile.cardNumber,
+					'vval': profile.cvv,
+					'orcer': profile.cvv,
+				}
+
+				Object.keys(fields).forEach(id => {
+					fillField(id, fields[id]);
+				});
+
+				fillField('order_billing_country', getCountryCode(profile.country), true);
+				fillField('order_billing_state', profile.state, true);
+				fillField('credit_card_type', profile.cardType, true);
+				fillField('credit_card_month', profile.expiryMonth, true);
+				fillField('credit_card_year', profile.expiryYear, true);
+				document.getElementsByClassName('icheckbox_minimal')[1].click();
+				document.querySelector('.terms .icheckbox_minimal').classList.add('checked');
+
+				if(settings.supreme.processPayment) {
+					document.querySelector('.button, .checkout').click();
+				}
 			}
 		}
 	});
 });
 
-function autofill(name, value) {
-	if (!value) return;
-	let element = document.getElementsByName(name)[0];
+function fillField(id, value, select = false) {
+	let element = document.getElementById(id);
 	if (element) {
-		let event = document.createEvent("HTMLEvents");
-		event.initEvent('change', true, false);
 		element.focus();
-		element.value = value;
-		element.dispatchEvent(event);
+		if (settings.simulateTyping && !select) {
+			simulateTyping(element, value, 0);
+		}else{
+			element.value = value;
+			element.dispatchEvent(new Event('change'));
+		}
 		element.blur();
+	}
+}
+
+function simulateTyping(element, value, i) {
+	if(i < value.length){
+		element.value += value.charAt(i);
+		element.dispatchEvent(new Event('change'));
+		setTimeout(() => {
+			i++;
+			simulateTyping(element, value, i);
+		}, 10);
 	}
 }
 
