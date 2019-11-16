@@ -5,7 +5,7 @@ Download on the Chrome store:
 
 https://chrome.google.com/webstore/detail/sss-autofill/gdhmefadngapdfphedlcimcdplachcip
 
-Made by Alex.#6254
+Made by Alex.#4321
 https://twitter.com/alexsnkrdev
 
 ### Installation

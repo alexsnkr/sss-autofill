@@ -1,8 +1,8 @@
 {
   "name": "autofill",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Open source autofill extension for Shopify, Supreme and Stripe",
-  "author": "Alex.#6254",
+  "author": "Alex.#4321",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --hide-modules",
     "build:dev": "cross-env NODE_ENV=development webpack --hide-modules",
