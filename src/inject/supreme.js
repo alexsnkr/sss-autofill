@@ -1,7 +1,6 @@
-let profile;
 let settings;
 
-chrome.extension.sendMessage({}, (response) => {	
+window.onload = function () {
 	chrome.storage.local.get({ profiles: [], selectedProfile: null, enabled: false, settings: {} }, (results) => {
 		profile = results.profiles.find(profile => profile.id === results.selectedProfile);
 		settings = results.settings;
@@ -42,7 +41,7 @@ chrome.extension.sendMessage({}, (response) => {
 			}
 		}
 	});
-});
+}
 
 function fillField(id, value, select = false) {
 	let element = document.getElementById(id);

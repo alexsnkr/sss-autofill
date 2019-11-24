@@ -1,8 +1,9 @@
-chrome.extension.sendMessage({}, function (response) {
-	chrome.storage.local.get({ 'profiles': [], 'selectedProfile': null, 'enabled': false }, (results) => {
-		if (results.enabled) {
-			let profile = results.profiles.find(profile => profile.id === results.selectedProfile);
+window.onload = function () {
+	chrome.storage.local.get({ profiles: [], selectedProfile: null, enabled: false, settings: {} }, (results) => {
+		profile = results.profiles.find(profile => profile.id === results.selectedProfile);
+		settings = results.settings;
 
+		if (settings.enabled) {
 			if (profile) {
 				fill('email', profile.email);
 				fill('name', `${profile.firstName} ${profile.lastName}`);
@@ -32,7 +33,7 @@ chrome.extension.sendMessage({}, function (response) {
 			}
 		}
 	});
-});
+}
 
 function fill(name, value) {
 	fillByAutocomplete(name, value);

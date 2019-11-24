@@ -1,8 +1,7 @@
-let profile;
 let settings;
 
-chrome.extension.sendMessage({}, (response) => {
-	chrome.storage.local.get({ profiles: [], selectedProfile: null, enabled: false, settings: {} }, (results) => {
+window.onload = function () {
+	chrome.storage.local.get({ profiles: [], selectedProfile: null, enabled: false, settings: {} }, (results) => {		
 		profile = results.profiles.find(profile => profile.id === results.selectedProfile);
 		settings = results.settings;
 
@@ -56,7 +55,7 @@ chrome.extension.sendMessage({}, (response) => {
 			}
 		}
 	});
-});
+}
 
 chrome.extension.onMessage.addListener((request, sender, sendResponse) => {	
 	if (request.action === 'completeCheckout' && settings.shopify.completeCheckout) {

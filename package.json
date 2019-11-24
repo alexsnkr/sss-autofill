@@ -1,6 +1,6 @@
 {
   "name": "autofill",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Open source autofill extension for Shopify, Supreme and Stripe",
   "author": "Alex.#4321",
   "scripts": {
