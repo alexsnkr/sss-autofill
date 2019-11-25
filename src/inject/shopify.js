@@ -33,11 +33,11 @@ window.onload = function () {
 						fillField(id, fields[id]);
 					});
 
-					fillField('checkout_shipping_address_country', profile.country, true);
-					fillField('checkout_shipping_address_province', profile.state, true);
+					fillField('#checkout_shipping_address_country', profile.country, true);
+					fillField('#checkout_shipping_address_province', profile.state, true);
 
-					fillField('checkout_billing_address_country', profile.country, true);
-					fillField('checkout_billing_address_province', profile.state, true);
+					fillField('#checkout_billing_address_country', profile.country, true);
+					fillField('#checkout_billing_address_province', profile.state, true);
 
 					console.log(hasCaptcha());
 					
